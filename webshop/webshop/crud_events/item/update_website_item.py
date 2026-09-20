@@ -29,4 +29,6 @@ def execute(doc, method=None):
 
                 web_item_doc = frappe.get_doc("Website Item", web_item)
                 web_item_doc.update(changed)
-                web_item_doc.save()
+                web_item_doc.save(
+                    ignore_permissions=bool(doc.flags.ignore_permissions)
+                )
